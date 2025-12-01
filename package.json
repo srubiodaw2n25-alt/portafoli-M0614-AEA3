@@ -1,0 +1,23 @@
+{
+  "name": "portafoli-m0614-aea3",
+  "version": "1.0.0",
+  "description": "Projecte per a l'assignatura de M0614. L'objectiu és crear un portafoli web estàtic (HTML/CSS) i gestionar-lo amb Git, GitHub i, eventualment, Integració Contínua.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srubiodaw2n25-alt/portafoli-M0614-AEA3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srubiodaw2n25-alt/portafoli-M0614-AEA3/issues"
+  },
+  "homepage": "https://github.com/srubiodaw2n25-alt/portafoli-M0614-AEA3#readme",
+  "devDependencies": {
+    "jsdoc": "^4.0.5"
+  }
+}
