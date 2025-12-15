@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/srubiodaw2n25-alt/portafoli-M0614-AEA3#readme",
   "devDependencies": {
-    "jsdoc": "^4.0.5"
+    "htmlint": "^0.0.7",
+    "jsdoc": "^4.0.5",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1"
   }
 }
