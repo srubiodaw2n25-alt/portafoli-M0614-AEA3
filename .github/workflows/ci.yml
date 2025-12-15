@@ -1,0 +1,38 @@
+YAML
+name: Comprovació de Codi (CI)
+
+# QUAN s'ha d'executar?
+on:
+  push:
+    # Afegim la teva branca a la llista permesa:
+    branches: [ "main", "ci/workflow" ] 
+  pull_request:
+    branches: [ "main" ]
+
+# QUÈ ha de fer?
+jobs:
+  build:
+    runs-on: ubuntu-latest  # La màquina virtual que ens presta GitHub
+
+    steps:
+    # Pas 1: Baixar el codi del repositori a la màquina virtual
+    - name: Checkout del codi
+      uses: actions/checkout@v4
+
+    # Pas 2: Instal·lar Node.js a la màquina virtual
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    # Pas 3: Instal·lar les dependències (htmlhint, stylelint...)
+    - name: Instal·lar dependències
+      run: npm ci
+
+    # Pas 4: Executar el Linter de CSS
+    - name: Revisar CSS (Stylelint)
+      run: npx stylelint "**/*.css"
+
+    # Pas 5: Executar el Linter de HTML
+    - name: Revisar HTML (HTMLHint)
+      run: npx htmlhint "**/*.html"
