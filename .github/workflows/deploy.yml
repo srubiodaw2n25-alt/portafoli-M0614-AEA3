@@ -1,0 +1,40 @@
+name: Desplegament a Producció (CD)
+
+# QUAN s'executa? Només quan entra codi bo a 'main'
+on:
+  push:
+    branches: ["main"]
+
+# Permisos necessaris perquè el robot publiqui la web
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Evita conflictes si hi ha dos desplegaments alhora
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # La feina de desplegar
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar el codi del repositori
+        uses: actions/checkout@v4
+      
+      - name: Preparar GitHub Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Empaquetar els fitxers de la web
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Puja tota la carpeta actual
+
+      - name: Publicar l'artefacte a Internet
+        id: deployment
+        uses: actions/deploy-pages@v4
